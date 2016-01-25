@@ -3,8 +3,9 @@
 <head lang="en">
     <meta charset="UTF-8" />
     <title>Pierwsza strona</title>
+    <link rel="stylesheet" th:href="@{/static/application.css}" href="/static/application.css" />
 </head>
 <body>
-    <p th:inline="text">[[${book.title}]]</p>
+    <p class="sample" th:inline="text">[[${book.title}]]</p>
 </body>
 </html>

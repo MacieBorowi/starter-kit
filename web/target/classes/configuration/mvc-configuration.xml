@@ -10,7 +10,7 @@
             </bean>
         </mvc:message-converters>
     </mvc:annotation-driven>
-    <!--<mvc:default-servlet-handler default-servlet-name="default"/>-->
+    <mvc:resources mapping="/static/**" location="/static/"/>
 
     <bean id="jsonObjectMapper" class="org.springframework.http.converter.json.Jackson2ObjectMapperFactoryBean">
         <property name="objectMapper">

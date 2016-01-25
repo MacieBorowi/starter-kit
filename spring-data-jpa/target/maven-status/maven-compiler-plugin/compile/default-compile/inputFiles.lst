@@ -1,4 +1,8 @@
-C:\projects\prezentation\business_logic_spring_hibernate\spring-data-jpa\src\main\java\pl\spring\demo\mapper\BookMapper.java
-C:\projects\prezentation\business_logic_spring_hibernate\spring-data-jpa\src\main\java\pl\spring\demo\service\BookService.java
-C:\projects\prezentation\business_logic_spring_hibernate\spring-data-jpa\src\main\java\pl\spring\demo\service\impl\BookServiceImpl.java
-C:\projects\prezentation\business_logic_spring_hibernate\spring-data-jpa\src\main\java\pl\spring\demo\repository\BookRepository.java
+C:\Borowik\workspace\starterkit\Spring\starter-kit\spring-data-jpa\src\main\java\pl\spring\demo\dao\Dao.java
+C:\Borowik\workspace\starterkit\Spring\starter-kit\spring-data-jpa\src\main\java\pl\spring\demo\dao\impl\BookDaoImpl.java
+C:\Borowik\workspace\starterkit\Spring\starter-kit\spring-data-jpa\src\main\java\pl\spring\demo\dao\impl\AbstractDao.java
+C:\Borowik\workspace\starterkit\Spring\starter-kit\spring-data-jpa\src\main\java\pl\spring\demo\mapper\BookMapper.java
+C:\Borowik\workspace\starterkit\Spring\starter-kit\spring-data-jpa\src\main\java\pl\spring\demo\repository\BookRepository.java
+C:\Borowik\workspace\starterkit\Spring\starter-kit\spring-data-jpa\src\main\java\pl\spring\demo\service\impl\BookServiceImpl.java
+C:\Borowik\workspace\starterkit\Spring\starter-kit\spring-data-jpa\src\main\java\pl\spring\demo\dao\BookDao.java
+C:\Borowik\workspace\starterkit\Spring\starter-kit\spring-data-jpa\src\main\java\pl\spring\demo\service\BookService.java
