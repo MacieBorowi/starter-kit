@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
        xmlns:aop="http://www.springframework.org/schema/aop"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <import resource="cache-context.xml" />
 
@@ -10,11 +11,8 @@
 
     <util:properties id="applicationProperties" location="classpath:config/application.properties"/>
 
-    <bean id="bookService" class="pl.spring.demo.service.impl.BookServiceImpl">
-        <property name="bookDao" ref="bookDao"/>
-    </bean>
-
-    <bean id="sequence" class="pl.spring.demo.common.Sequence"/>
+	<context:annotation-config/>
+	<context:component-scan base-package="pl.spring.demo"/>
 
     <!-- AOP -->
     <bean id="bookDaoAdvisor" class="pl.spring.demo.aop.BookDaoAdvisor"/>
@@ -22,7 +20,6 @@
     <bean id="bookDao" class="org.springframework.aop.framework.ProxyFactoryBean">
         <property name="target">
             <bean class="pl.spring.demo.dao.impl.BookDaoImpl">
-                <property name="sequence" ref="sequence" />
             </bean>
         </property>
         <property name="interceptorNames">
