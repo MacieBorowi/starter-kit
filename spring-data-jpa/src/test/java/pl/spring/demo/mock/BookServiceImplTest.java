@@ -8,7 +8,6 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import pl.spring.demo.dao.BookDao;
 import pl.spring.demo.service.impl.BookServiceImpl;
@@ -22,8 +21,6 @@ public class BookServiceImplTest {
 	private BookServiceImpl bookService;
 	@Mock
 	private BookDao bookDao;
-	@Autowired
-	private MapperToEntityTo map;
 
 	@Before
 	public void setUp() {
@@ -31,14 +28,15 @@ public class BookServiceImplTest {
 	}
 
 	@Test
-	public void testShouldSaveBook() {
+	public void testShouldMockSaveBook() {
 		// given
-		BookEntity book = new BookEntity(null, "title", "1L;author;name");
-		Mockito.when(bookDao.save(book)).thenReturn(new BookEntity(1L, "title", "1L;author;name"));
+		BookTo book = new BookTo(null, "title", "1L;author;name");
+		BookEntity mockedEntity = new BookEntity(1L, "title", "1L;author;name");
+		Mockito.when(bookDao.save(MapperToEntityTo.mapEntity(book))).thenReturn(mockedEntity);
 		// when
-		BookTo result = bookService.saveBook(map.mapTo(book));
+		BookTo result = bookService.saveBook(book);
 		// then
-		Mockito.verify(bookDao).save(book);
+		Mockito.verify(bookDao).save(MapperToEntityTo.mapEntity(book));
 		assertEquals(1L, result.getId().longValue());
 	}
 }

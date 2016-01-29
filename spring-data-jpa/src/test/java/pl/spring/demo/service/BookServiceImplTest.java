@@ -45,7 +45,7 @@ public class BookServiceImplTest {
 		// then
 		assertNotNull(allBooks);
 		assertFalse(allBooks.isEmpty());
-		assertEquals(8, allBooks.size());
+		assertEquals(9, allBooks.size());
 	}
 
 	@Test
@@ -138,6 +138,18 @@ public class BookServiceImplTest {
 		// then
 		assertNotNull(booksByAuthor);
 		assertTrue(booksByAuthor.isEmpty());
+	}
+
+	@Test
+	public void testShouldSaveBook() {
+		// given
+		BookTo bookTo = new BookTo(null, "title", "1L;author;name");
+		// when
+		BookTo result = bookService.saveBook(bookTo);
+		// then
+		assertTrue(result.getId() != null);
+		assertEquals(bookTo.getAuthors(), result.getAuthors());
+		assertEquals(bookTo.getTitle(), result.getTitle());
 	}
 
 }

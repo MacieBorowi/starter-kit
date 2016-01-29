@@ -8,21 +8,21 @@ import org.springframework.stereotype.Component;
 @Component
 public class MapperToEntityTo {
 
-	public BookTo mapTo(BookEntity bookEntity) {
+	public static BookTo mapTo(BookEntity bookEntity) {
 		if (bookEntity != null) {
 			return new BookTo(bookEntity.getId(), bookEntity.getTitle(), bookEntity.getAuthors());
 		}
 		return null;
 	}
 
-	public BookEntity mapEntity(BookTo bookTo) {
+	public static BookEntity mapEntity(BookTo bookTo) {
 		if (bookTo != null) {
 			return new BookEntity(bookTo.getId(), bookTo.getTitle(), bookTo.getAuthors());
 		}
 		return null;
 	}
 
-	public List<BookTo> mapListTO(List<BookEntity> listEntity) {
+	public static List<BookTo> mapListTO(List<BookEntity> listEntity) {
 		if (listEntity != null) {
 			List<BookTo> listTo = new ArrayList<>();
 			for (BookEntity entity : listEntity) {
@@ -33,7 +33,7 @@ public class MapperToEntityTo {
 		return null;
 	}
 
-	public List<BookEntity> mapListEntity(List<BookTo> listTo) {
+	public static List<BookEntity> mapListEntity(List<BookTo> listTo) {
 		if (listTo != null) {
 			List<BookEntity> listEntity = new ArrayList<>();
 			for (BookTo To : listTo) {

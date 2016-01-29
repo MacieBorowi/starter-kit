@@ -2,7 +2,6 @@ package pl.spring.demo.aop;
 
 import java.lang.reflect.Method;
 
-import org.aspectj.lang.annotation.Before;
 import org.springframework.aop.MethodBeforeAdvice;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -14,19 +13,16 @@ import pl.spring.demo.exception.BookNotNullIdException;
 import pl.spring.demo.to.IdAware;
 
 @Component
-// @Aspect
 public class BookDaoAdvisor implements MethodBeforeAdvice {
 
 	@Autowired
 	Sequence sequence;
 
 	@Override
-	@Before("execution( * pl.spring.demo.dao.impl.BookDaoImpl.save(..)")
 	public void before(Method method, Object[] objects, Object o) throws Throwable {
 
 		if (hasAnnotation(method, o, NullableId.class)) {
 			checkNotNullId(objects[0]);
-
 			if ((objects[0] instanceof IdAware && ((IdAware) objects[0]).getId() == null)) {
 				IdAware book = (IdAware) objects[0];
 				book.setId(sequence.nextValue(((BookDao) o).findAll()));

@@ -9,10 +9,11 @@
 
     <aop:aspectj-autoproxy/>
 
-    <util:properties id="applicationProperties" location="classpath:config/application.properties"/>
-
 	<context:annotation-config/>
 	<context:component-scan base-package="pl.spring.demo"/>
+
+    <util:properties id="applicationProperties" location="classpath:config/application.properties"/>
+
 
     <!-- AOP -->
     <bean id="bookDaoAdvisor" class="pl.spring.demo.aop.BookDaoAdvisor"/>
