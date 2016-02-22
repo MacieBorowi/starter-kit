@@ -21,6 +21,8 @@ public class BookServiceImplTest {
 	private BookServiceImpl bookService;
 	@Mock
 	private BookDao bookDao;
+	@Mock
+	private MapperToEntityTo map;
 
 	@Before
 	public void setUp() {
@@ -32,11 +34,13 @@ public class BookServiceImplTest {
 		// given
 		BookTo book = new BookTo(null, "title", "1L;author;name");
 		BookEntity mockedEntity = new BookEntity(1L, "title", "1L;author;name");
-		Mockito.when(bookDao.save(MapperToEntityTo.mapEntity(book))).thenReturn(mockedEntity);
+		Mockito.when(map.mapEntity(book)).thenReturn(mockedEntity);
+		Mockito.when(bookDao.save(mockedEntity)).thenReturn(mockedEntity);
+		Mockito.when(map.mapTo(mockedEntity)).thenReturn(book);
 		// when
 		BookTo result = bookService.saveBook(book);
 		// then
-		Mockito.verify(bookDao).save(MapperToEntityTo.mapEntity(book));
-		assertEquals(1L, result.getId().longValue());
+		Mockito.verify(bookDao).save(mockedEntity);
+		assertEquals(book, result);
 	}
 }
